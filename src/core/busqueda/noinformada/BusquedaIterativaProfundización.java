@@ -29,36 +29,36 @@ import core.busqueda.framework.Busqueda;
  * @author Ravi Mohan
  * @author Ciaran O'Reilly
  */
-public class IterativeDeepeningSearch extends ExpansorDeNodo implements Busqueda {
-	public static final String PATH_COST = "pathCost";
+public class BusquedaIterativaProfundización extends ExpansorDeNodo implements Busqueda {
+	public static final String Costo_Camino = "pathCost";
 
 	// Not infinity, but will do, :-)
 	private final int infinity = Integer.MAX_VALUE;
 
-	private final Metricas iterationMetrics;
+	private final Metricas metricaIteracion;
 
-	public IterativeDeepeningSearch() {
-		iterationMetrics = new Metricas();
-		iterationMetrics.set(METRIC_NODES_EXPANDED, 0);
-		iterationMetrics.set(PATH_COST, 0);
+	public BusquedaIterativaProfundización() {
+		metricaIteracion = new Metricas();
+		metricaIteracion.set(METRIC_NODES_EXPANDED, 0);
+		metricaIteracion.set(Costo_Camino, 0);
 	}
 
 	// function ITERATIVE-DEEPENING-SEARCH(problem) returns a solution, or
 	// failure
 	public List<Accion> search(Problema p) throws Exception {
-		iterationMetrics.set(METRIC_NODES_EXPANDED, 0);
-		iterationMetrics.set(PATH_COST, 0);
+		metricaIteracion.set(METRIC_NODES_EXPANDED, 0);
+		metricaIteracion.set(Costo_Camino, 0);
 		// for depth = 0 to infinity do
 		for (int i = 0; i <= infinity; i++) {
 			// result <- DEPTH-LIMITED-SEARCH(problem, depth)
 			DepthLimitedSearch dls = new DepthLimitedSearch(i);
 			List<Accion> result = dls.search(p);
-			iterationMetrics.set(METRIC_NODES_EXPANDED,
-					iterationMetrics.getInt(METRIC_NODES_EXPANDED)
+			metricaIteracion.set(METRIC_NODES_EXPANDED,
+					metricaIteracion.getInt(METRIC_NODES_EXPANDED)
 							+ dls.getMetrics().getInt(METRIC_NODES_EXPANDED));
 			// if result != cutoff then return result
 			if (!dls.isCutOff(result)) {
-				iterationMetrics.set(PATH_COST, dls.getPathCost());
+				metricaIteracion.set(Costo_Camino, dls.getPathCost());
 				return result;
 			}
 		}
@@ -67,7 +67,7 @@ public class IterativeDeepeningSearch extends ExpansorDeNodo implements Busqueda
 
 	@Override
 	public Metricas getMetrics() {
-		return iterationMetrics;
+		return metricaIteracion;
 	}
 
 	//

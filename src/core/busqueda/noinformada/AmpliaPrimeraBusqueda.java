@@ -40,26 +40,26 @@ import core.util.estructuradedatos.FIFOQueue;
  * 
  * @author Ciaran O'Reilly
  */
-public class BreadthFirstSearch implements Busqueda {
+public class AmpliaPrimeraBusqueda implements Busqueda {
 
-	private final BusquedaCola search;
+	private final BusquedaCola busqueda;
 
-	public BreadthFirstSearch() {
+	public AmpliaPrimeraBusqueda() {
 		this(new BusquedaDeGrafo());
 	}
 
-	public BreadthFirstSearch(BusquedaCola search) {
+	public AmpliaPrimeraBusqueda(BusquedaCola search) {
 		// Goal test is to be applied to each node when it is generated
 		// rather than when it is selected for expansion.
 		search.setCheckGoalBeforeAddingToFrontier(true);
-		this.search = search;
+		this.busqueda = search;
 	}
 
 	public List<Accion> search(Problema p) {
-		return search.search(p, new FIFOQueue<Nodo>());
+		return busqueda.search(p, new FIFOQueue<Nodo>());
 	}
 
 	public Metricas getMetrics() {
-		return search.getMetrics();
+		return busqueda.getMetrics();
 	}
 }

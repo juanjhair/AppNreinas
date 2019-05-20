@@ -5,7 +5,7 @@ package gui.framework;
  * 
  * @author Ruediger Lunde
  */
-public abstract class AgentAppController {
+public abstract class AgenteAppControlador {
 	protected AgentAppFrame cuadro;
 
 	/**
@@ -27,13 +27,13 @@ public abstract class AgentAppController {
 	 * button is pressed or the selection state of the selectors changes.
 	 * @param changedSelector Name of the changed selector or null.
 	 */
-	public abstract void prepare(String changedSelector);
+	public abstract void preparar(String changedSelector);
 
 	/**
 	 * Checks whether the current environment is prepared for starting
 	 * simulation.
 	 */
-	public abstract boolean isPrepared();
+	public abstract boolean isPreparado();
 	
 	/**
 	 * The associated {@link AgentAppFrame} calls this method when the run

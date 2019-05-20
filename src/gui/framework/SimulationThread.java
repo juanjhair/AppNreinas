@@ -43,7 +43,7 @@ public class SimulationThread extends CancelableThread {
 				controller.step(frame.getMessageLogger());
 		} catch (Exception e) {
 			logger.log
-			("Error: Somthing went wrong running the agent (" + e + ").");
+			("Error: Algo sucedio al correr el agente (" + e + ").");
 			e.printStackTrace(); // for debugging
 		}
 		try {
@@ -55,7 +55,7 @@ public class SimulationThread extends CancelableThread {
 			});
 		} catch(Exception e) {
 			logger.log
-			("Error: Somthing went wrong when updating the GUI (" + e + ").");
+			("Error: Algo sucedio al actualizar la GUI(" + e + ").");
 			e.printStackTrace(); // for debugging
 		}
 	}

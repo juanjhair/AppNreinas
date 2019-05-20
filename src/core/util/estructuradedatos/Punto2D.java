@@ -7,11 +7,11 @@ package core.util.estructuradedatos;
  * @author R. Lunde
  * @author Mike Stampone
  */
-public class Point2D {
+public class Punto2D {
 	private double x;
 	private double y;
 
-	public Point2D(double x, double y) {
+	public Punto2D(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -41,9 +41,9 @@ public class Point2D {
 	 * 
 	 * @return the Euclidean distance between a specified point and this point.
 	 */
-	public double distance(Point2D pt) {
-		double result = (pt.getX() - x) * (pt.getX() - x);
-		result += (pt.getY() - y) * (pt.getY() - y);
-		return Math.sqrt(result);
+	public double distancia(Punto2D pt) {
+		double resultado = (pt.getX() - x) * (pt.getX() - x);
+		resultado += (pt.getY() - y) * (pt.getY() - y);
+		return Math.sqrt(resultado);
 	}
 }

@@ -45,7 +45,7 @@ public class EmptyEnvironmentView extends AgentAppEnvironmentView {
 	 * transformation is able to display everything within this bounding box
 	 * without scrolling.
 	 */
-	public void adjustTransformation(double minXW, double minYW, double maxXW,
+	public void AjustarTransformacion(double minXW, double minYW, double maxXW,
 			double maxYW) {
 		// adjust coordinates relative to the left upper corner of the graph
 		// area

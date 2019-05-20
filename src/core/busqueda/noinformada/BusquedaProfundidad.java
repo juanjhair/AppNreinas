@@ -22,11 +22,11 @@ import core.util.estructuradedatos.LIFOQueue;
  * @author Ravi Mohan
  * 
  */
-public class DepthFirstSearch implements Busqueda {
+public class BusquedaProfundidad implements Busqueda {
 
 	BusquedaCola search;
 
-	public DepthFirstSearch(BusquedaCola search) {
+	public BusquedaProfundidad(BusquedaCola search) {
 		this.search = search;
 	}
 

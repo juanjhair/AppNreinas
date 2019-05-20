@@ -10,18 +10,18 @@ import core.util.estructuradedatos.UbicacionXY;
  * @author Ravi Mohan
  * @author R. Lunde
  */
-public class QueenAction extends AccionDinamica {
-	public static final String PLACE_QUEEN = "placeQueenAt";
-	public static final String REMOVE_QUEEN = "removeQueenAt";
-	public static final String MOVE_QUEEN = "moveQueenTo";
+public class ReinaAccion extends AccionDinamica {
+	public static final String Lugar_reina = "placeQueenAt";
+	public static final String Eliminar_reina = "removeQueenAt";
+	public static final String MoverReina = "moveQueenTo";
 
 	public static final String ATTRIBUTE_QUEEN_LOC = "location";
 
 	/**
-	 * Creates a queen action. Supported values of type are {@link #PLACE_QUEEN}
-	 * , {@link #REMOVE_QUEEN}, or {@link #MOVE_QUEEN}.
+	 * Creates a queen action. Supported values of type are {@link #Lugar_reina}
+	 * , {@link #Eliminar_reina}, or {@link #MoverReina}.
 	 */
-	public QueenAction(String type, UbicacionXY loc) {
+	public ReinaAccion(String type, UbicacionXY loc) {
 		super(type);
 		setAttribute(ATTRIBUTE_QUEEN_LOC, loc);
 	}

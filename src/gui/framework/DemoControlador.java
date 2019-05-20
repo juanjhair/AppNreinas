@@ -6,7 +6,7 @@ package gui.framework;
  * 
  * @author Ruediger Lunde
  */
-public class DemoController extends AgentAppController {
+public class DemoControlador extends AgentAppController {
 	/** The controller decides when simulation can be started. */
 	private boolean isPrepared = false;
 
@@ -16,9 +16,9 @@ public class DemoController extends AgentAppController {
 	 */
 	public void clear() {
 		MessageLogger logger = cuadro.getMessageLogger();
-		logger.log("clearing...");
+		logger.log("limpiando..");
 		logger.log(cuadro.getSelection().toString());
-		cuadro.setStatus("Task cleared.");
+		cuadro.setStatus("Tarea despejada.");
 	}
 
 	/**
@@ -31,11 +31,11 @@ public class DemoController extends AgentAppController {
 	public void prepare(String changedSelector) {
 		MessageLogger logger = cuadro.getMessageLogger();
 		logger
-				.log("preparing..."
+				.log("preparando..."
 						+ (changedSelector != null ? " (" + changedSelector
 								+ ")" : ""));
 		logger.log(cuadro.getSelection().toString());
-		cuadro.setStatus("Task prepared.");
+		cuadro.setStatus("Tarea preparada.");
 		isPrepared = true;
 	}
 
@@ -55,7 +55,7 @@ public class DemoController extends AgentAppController {
 	 * swing components because they are not thread safe.
 	 */
 	public void run(MessageLogger logger) {
-		logger.log("running...");
+		logger.log("corriendo...");
 		try {
 			for (int i = 0; i < 10 && !cuadro.simulationPaused(); i++) {
 				Thread.sleep(500);
@@ -73,10 +73,10 @@ public class DemoController extends AgentAppController {
 	 * swing components because they are not thread-safe.
 	 */
 	public void step(MessageLogger logger) {
-		logger.log("executing a step...");
+		logger.log("ejecutando paso...");
 		try {
 			Thread.sleep(2000);
-			logger.log("ready");
+			logger.log("listo");
 		} catch (InterruptedException e) {
 		}
 	}
@@ -92,12 +92,12 @@ public class DemoController extends AgentAppController {
 	 */
 	public void update(SimulationThread agentThread) {
 		if (agentThread.isCanceled()) {
-			cuadro.setStatus("Task canceled.");
+			cuadro.setStatus("Tarea cancelada.");
 			isPrepared = false;
 		} else if (cuadro.simulationPaused()) {
-			cuadro.setStatus("Task paused.");
+			cuadro.setStatus("Tarea pausada.");
 		} else {
-			cuadro.setStatus("Task completed.");
+			cuadro.setStatus("Tarea completada.");
 		}
 	}
 }

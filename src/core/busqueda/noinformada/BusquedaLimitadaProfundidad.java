@@ -40,42 +40,42 @@ import core.busqueda.framework.UtilidadesDeBusqueda;
  * @author Ciaran O'Reilly
  * @author Mike Stampone
  */
-public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
-	private static String PATH_COST = "pathCost";
-	private static List<Accion> cutoffResult = null;
-	private final int limit;
+public class BusquedaLimitadaProfundidad extends ExpansorDeNodo implements Busqueda {
+	private static String Costo_Camino = "pathCost";
+	private static List<Accion> cortarResultado = null;
+	private final int limite;
 
-	public DepthLimitedSearch(int limit) {
-		this.limit = limit;
+	public BusquedaLimitadaProfundidad(int limite) {
+		this.limite = limite;
 	}
 
 	/**
 	 * Returns <code>true</code> if the specified action list indicates a search
 	 * reached it limit without finding a goal.
 	 * 
-	 * @param result
+	 * @param resultado
 	 *            the action list resulting from a previous search
 	 * 
 	 * @return <code>true</code> if the specified action list indicates a search
 	 *         reached it limit without finding a goal.
 	 */
-	public boolean isCutOff(List<Accion> result) {
-		return 1 == result.size()
-				&& IndicadorTopeDeAccion.CUT_OFF.equals(result.get(0));
+	public boolean isCutOff(List<Accion> resultado) {
+		return 1 == resultado.size()
+				&& IndicadorTopeDeAccion.CUT_OFF.equals(resultado.get(0));
 	}
 
 	/**
 	 * Returns <code>true</code> if the specified action list indicates a goal
 	 * not found.
 	 * 
-	 * @param result
+	 * @param resultado
 	 *            the action list resulting from a previous search
 	 * 
 	 * @return <code>true</code> if the specified action list indicates a goal
 	 *         not found.
 	 */
-	public boolean isFailure(List<Accion> result) {
-		return 0 == result.size();
+	public boolean isFailure(List<Accion> resultado) {
+		return 0 == resultado.size();
 	}
 
 	// function DEPTH-LIMITED-SEARCH(problem, limit) returns a solution, or
@@ -100,7 +100,7 @@ public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
 		clearInstrumentation();
 		// return RECURSIVE-DLS(MAKE-NODE(INITIAL-STATE[problem]), problem,
 		// limit)
-		return recursiveDLS(new Nodo(p.getInitialState()), p, limit);
+		return DLSrecursivo(new Nodo(p.getInitialState()), p, limite);
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
 	 */
 	public void clearInstrumentation() {
 		super.clearInstrumentation();
-		metrics.set(PATH_COST, 0);
+		metrics.set(Costo_Camino, 0);
 	}
 
 	/**
@@ -117,18 +117,18 @@ public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
 	 * 
 	 * @return the path cost metric
 	 */
-	public double getPathCost() {
-		return metrics.getDouble(PATH_COST);
+	public double getCostoCamino() {
+		return metrics.getDouble(Costo_Camino);
 	}
 
 	/**
 	 * Sets the path cost metric.
 	 * 
-	 * @param pathCost
+	 * @param CostoCamino
 	 *            the value of the path cost metric
 	 */
-	public void setPathCost(Double pathCost) {
-		metrics.set(PATH_COST, pathCost);
+	public void setCostoCamino(Double CostoCamino) {
+		metrics.set(Costo_Camino, CostoCamino);
 	}
 
 	//
@@ -137,14 +137,14 @@ public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
 
 	// function RECURSIVE-DLS(node, problem, limit) returns a solution, or
 	// failure/cutoff
-	private List<Accion> recursiveDLS(Nodo node, Problema problem, int limit) {
+	private List<Accion> DLSrecursivo(Nodo node, Problema problem, int limit) {
 		// if problem.GOAL-TEST(node.STATE) then return SOLUTION(node)
 		if (UtilidadesDeBusqueda.isGoalState(problem, node)) {
-			setPathCost(node.getPathCost());
+			setCostoCamino(node.getPathCost());
 			return UtilidadesDeBusqueda.actionsFromNodes(node.getPathFromRoot());
 		} else if (0 == limit) {
 			// else if limit = 0 then return cutoff
-			return cutoff();
+			return cortaroff();
 		} else {
 			// else
 			// cutoff_occurred? <- false
@@ -153,7 +153,7 @@ public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
 			for (Nodo child : this.expandNode(node, problem)) {
 				// child <- CHILD-NODE(problem, node, action)
 				// result <- RECURSIVE-DLS(child, problem, limit - 1)
-				List<Accion> result = recursiveDLS(child, problem, limit - 1);
+				List<Accion> result = DLSrecursivo(child, problem, limit - 1);
 				// if result = cutoff then cutoff_occurred? <- true
 				if (isCutOff(result)) {
 					cutoff_occurred = true;
@@ -165,22 +165,22 @@ public class DepthLimitedSearch extends ExpansorDeNodo implements Busqueda {
 
 			// if cutoff_occurred? then return cutoff else return failure
 			if (cutoff_occurred) {
-				return cutoff();
+				return cortaroff();
 			} else {
 				return failure();
 			}
 		}
 	}
 
-	private List<Accion> cutoff() {
+	private List<Accion> cortaroff() {
 		// Only want to created once
-		if (null == cutoffResult) {
-			cutoffResult = new ArrayList<Accion>();
-			cutoffResult.add(IndicadorTopeDeAccion.CUT_OFF);
+		if (null == cortarResultado) {
+			cortarResultado = new ArrayList<Accion>();
+			cortarResultado.add(IndicadorTopeDeAccion.CUT_OFF);
 			// Ensure it cannot be modified externally.
-			cutoffResult = Collections.unmodifiableList(cutoffResult);
+			cortarResultado = Collections.unmodifiableList(cortarResultado);
 		}
-		return cutoffResult;
+		return cortarResultado;
 	}
 
 	private List<Accion> failure() {

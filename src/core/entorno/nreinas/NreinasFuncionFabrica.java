@@ -16,20 +16,20 @@ import core.util.estructuradedatos.UbicacionXY;
  * @author Ciaran O'Reilly
  * @author R. Lunde
  */
-public class NQueensFunctionFactory {
-	private static FuncionAcciones _iActionsFunction = null;
-	private static FuncionAcciones _cActionsFunction = null;
-	private static FuncionResultado _resultFunction = null;
+public class NreinasFuncionFabrica {
+	private static FuncionAcciones _iAccionesFuncion = null;
+	private static FuncionAcciones _cAccionesFuncion = null;
+	private static FuncionResultado _resultadoFuncion = null;
 
 	/**
 	 * Returns an ACTIONS function for the incremental formulation of the
 	 * n-queens problem.
 	 */
 	public static FuncionAcciones getIActionsFunction() {
-		if (null == _iActionsFunction) {
-			_iActionsFunction = new NQIActionsFunction();
+		if (null == _iAccionesFuncion) {
+			_iAccionesFuncion = new NQIActionsFunction();
 		}
-		return _iActionsFunction;
+		return _iAccionesFuncion;
 	}
 
 	/**
@@ -37,20 +37,20 @@ public class NQueensFunctionFactory {
 	 * n-queens problem.
 	 */
 	public static FuncionAcciones getCActionsFunction() {
-		if (null == _cActionsFunction) {
-			_cActionsFunction = new NQCActionsFunction();
+		if (null == _cAccionesFuncion) {
+			_cAccionesFuncion = new NQCActionsFunction();
 		}
-		return _cActionsFunction;
+		return _cAccionesFuncion;
 	}
 
 	/**
 	 * Returns a RESULT function for the n-queens problem.
 	 */
 	public static FuncionResultado getResultFunction() {
-		if (null == _resultFunction) {
-			_resultFunction = new NQResultFunction();
+		if (null == _resultadoFuncion) {
+			_resultadoFuncion = new NQResultFunction();
 		}
-		return _resultFunction;
+		return _resultadoFuncion;
 	}
 
 	/**

@@ -6,7 +6,7 @@ package core.util;
  * @author R. Lunde
  * @author Mike Stampone
  */
-public class CancelableThread extends Thread {
+public class CancelableHilo extends Thread {
 
 	/**
 	 * Returns <code>true</code> if the current thread is canceled
@@ -14,26 +14,26 @@ public class CancelableThread extends Thread {
 	 * @return <code>true</code> if the current thread is canceled
 	 */
 	public static boolean currIsCanceled() {
-		if (Thread.currentThread() instanceof CancelableThread)
-			return ((CancelableThread) Thread.currentThread()).isCanceled;
+		if (Thread.currentThread() instanceof CancelableHilo)
+			return ((CancelableHilo) Thread.currentThread()).isCancelado;
 		return false;
 	}
 
-	private volatile boolean isCanceled;
+	private volatile boolean isCancelado;
 
 	/**
 	 * Returns <code>true</code> if this thread is canceled
 	 * 
 	 * @return <code>true</code> if this thread is canceled
 	 */
-	public boolean isCanceled() {
-		return isCanceled;
+	public boolean isCancelado() {
+		return isCancelado;
 	}
 
 	/**
 	 * Cancels this thread
 	 */
 	public void cancel() {
-		isCanceled = true;
+		isCancelado = true;
 	}
 }

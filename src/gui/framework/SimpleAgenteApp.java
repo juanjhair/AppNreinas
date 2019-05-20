@@ -19,7 +19,7 @@ package gui.framework;
  * 
  * @author Ruediger Lunde
  */
-public class SimpleAgentApp {
+public class SimpleAgenteApp {
 	/**
 	 * Constructs an agent application and sets the application frame visible.
 	 */
@@ -57,7 +57,7 @@ public class SimpleAgentApp {
 	 */
 	public AgentAppFrame createFrame() {
 		AgentAppFrame result = new AgentAppFrame();
-		result.setTitle("Demo Agent Application");
+		result.setTitle("Demo Agente Aplicacion");
 		result.setSelectors(new String[] { "XSelect", "YSelect" },
 				new String[] { "Select X", "Select Y" });
 		result.setSelectorItems("XSelect", new String[] { "X1 (Small)",
@@ -81,6 +81,6 @@ public class SimpleAgentApp {
 	 * Starts a simple test frame application.
 	 */
 	public static void main(String args[]) {
-		new SimpleAgentApp().startApplication();
+		new SimpleAgenteApp().startApplication();
 	}
 }

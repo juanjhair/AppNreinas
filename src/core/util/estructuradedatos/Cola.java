@@ -19,7 +19,7 @@ package core.util.estructuradedatos;
  * @author Ciaran O'Reilly
  * 
  */
-public interface Queue<E> extends java.util.Queue<E> {
+public interface Cola<E> extends java.util.Queue<E> {
 	/**
 	 * EMPTY?(queue)
 	 * 
@@ -42,5 +42,5 @@ public interface Queue<E> extends java.util.Queue<E> {
 	 * @return the resulting queue with the element inserted. null is returned
 	 *         if the element could not be inserted.
 	 */
-	Queue<E> insert(E element);
+	Cola<E> insert(E element);
 }

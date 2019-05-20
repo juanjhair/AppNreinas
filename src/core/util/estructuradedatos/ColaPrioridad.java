@@ -12,31 +12,31 @@ import java.util.SortedSet;
  * 
  * @author Ciaran O'Reilly
  */
-public class PriorityQueue<E> extends java.util.PriorityQueue<E> implements
+public class ColaPrioridad<E> extends java.util.PriorityQueue<E> implements
 		Queue<E> {
 	private static final long serialVersionUID = 1;
 
-	public PriorityQueue() {
+	public ColaPrioridad() {
 		super();
 	}
 
-	public PriorityQueue(Collection<? extends E> c) {
+	public ColaPrioridad(Collection<? extends E> c) {
 		super(c);
 	}
 
-	public PriorityQueue(int initialCapacity) {
+	public ColaPrioridad(int initialCapacity) {
 		super(initialCapacity);
 	}
 
-	public PriorityQueue(int initialCapacity, Comparator<? super E> comparator) {
+	public ColaPrioridad(int initialCapacity, Comparator<? super E> comparator) {
 		super(initialCapacity, comparator);
 	}
 
-	public PriorityQueue(PriorityQueue<? extends E> c) {
+	public ColaPrioridad(ColaPrioridad<? extends E> c) {
 		super(c);
 	}
 
-	public PriorityQueue(SortedSet<? extends E> c) {
+	public ColaPrioridad(SortedSet<? extends E> c) {
 		super(c);
 	}
 

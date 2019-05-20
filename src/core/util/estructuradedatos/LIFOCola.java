@@ -12,14 +12,14 @@ import java.util.LinkedList;
  * @author Ravi Mohan
  * @author Ciaran O'Reilly
  */
-public class LIFOQueue<E> extends LinkedList<E> implements Queue<E> {
+public class LIFOCola<E> extends LinkedList<E> implements Queue<E> {
 	private static final long serialVersionUID = 1;
 
-	public LIFOQueue() {
+	public LIFOCola() {
 		super();
 	}
 
-	public LIFOQueue(Collection<? extends E> c) {
+	public LIFOCola(Collection<? extends E> c) {
 		super(c);
 	}
 
