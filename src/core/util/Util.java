@@ -39,6 +39,7 @@ public class Util {
 	 * @return a list of all of the elements in the passed in list except for
 	 *         the first element.
 	 */
+	 /* Hola Mundo */
 	public static <T> List<T> rest(List<T> l) {
 		return l.subList(1, l.size());
 	}
